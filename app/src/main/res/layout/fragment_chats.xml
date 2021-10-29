@@ -51,14 +51,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextField"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.App.TextInputLayout.Search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/search">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.App.EditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

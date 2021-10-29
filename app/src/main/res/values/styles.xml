@@ -33,10 +33,10 @@
 
     <!-- Button -->
     <style name="Widget.App.CircleButtonInvert" parent="Widget.App.CircleButton">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CircleButtonInvert</item>
     </style>
 
-    <style name="ThemeOverlay.App.Button" parent="">
+    <style name="ThemeOverlay.App.CircleButtonInvert" parent="">
         <item name="colorPrimary">@color/onPrimary</item>
         <item name="colorOnPrimary">@color/primary</item>
     </style>
@@ -49,6 +49,21 @@
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/onPrimary</item>
         <item name="colorOnPrimary">@color/primary</item>
+    </style>
+
+    <!-- Search Input -->
+    <style name="Widget.App.TextInputLayout.Search" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxCornerRadiusBottomEnd">15dp</item>
+        <item name="boxCornerRadiusBottomStart">15dp</item>
+        <item name="boxCornerRadiusTopEnd">15dp</item>
+        <item name="boxCornerRadiusTopStart">15dp</item>
+        <item name="startIconDrawable">@drawable/ic_baseline_search_24</item>
+    </style>
+
+    <style name="Widget.App.EditText" parent="Widget.AppCompat.EditText">
+        <item name="backgroundTintMode">screen</item>
+        <item name="backgroundTint">#EEEEEF</item>
     </style>
 
 </resources>
