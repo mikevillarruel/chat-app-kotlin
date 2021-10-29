@@ -16,26 +16,9 @@
         <item name="bottomNavigationStyle">
             @style/Widget.App.BottomNavigationView
         </item>
-        <item name="materialButtonStyle">@style/Widget.App.CircleButton</item>
-
         <item name="android:navigationBarColor">@color/onPrimary</item>
-        <!-- <item name="android:windowLightNavigationBar">true</item> -->
-
-    </style>
-
-    <style name="Widget.App.CircleButton" parent="Widget.MaterialComponents.Button">
-        <item name="iconGravity">textStart</item>
-        <item name="iconPadding">0dp</item>
-        <item name="android:background">@drawable/button_oval</item>
-    </style>
-
-    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
-    </style>
-
-    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
-        <item name="colorPrimary">@color/onPrimary</item>
-        <item name="colorOnPrimary">@color/primary</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="materialButtonStyle">@style/Widget.App.CircleButton</item>
     </style>
 
 </resources>

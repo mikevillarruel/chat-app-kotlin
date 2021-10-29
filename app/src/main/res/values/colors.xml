@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#FF07C286</color>
     <color name="onPrimary">#FFF8F8F8</color>
+    <color name="grey">#9E9E9E</color>
+    <color name="primaryVariant">#285C54</color>
+    <color name="toolbar">#ECECED</color>
 </resources>

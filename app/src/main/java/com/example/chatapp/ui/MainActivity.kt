@@ -1,11 +1,14 @@
 package com.example.chatapp.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.chatapp.R
+import com.example.chatapp.core.hide
+import com.example.chatapp.core.show
 import com.example.chatapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +26,22 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
 
+        observeDestinationChange()
+
     }
 
+    private fun observeDestinationChange() {
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.chatFragment -> {
+                    binding.bottomNavigation.hide()
+                    window.statusBarColor = resources.getColor(R.color.toolbar)
+                }
+                else -> {
+                    binding.bottomNavigation.show()
+                    window.statusBarColor = Color.WHITE
+                }
+            }
+        }
+    }
 }
