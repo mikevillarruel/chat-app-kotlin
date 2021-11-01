@@ -99,14 +99,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/itxtMessage"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/itxtMessageContainer"
+            style="@style/Widget.App.TextInputLayout.Message"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
+            android:paddingBottom="5dp"
+            android:hint="@string/message"
             app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnCamera"
-            app:layout_constraintStart_toEndOf="@id/btnAdd" />
+            app:layout_constraintStart_toEndOf="@id/btnAdd"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMessage"
+                style="@style/Widget.App.EditTextMessage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnCamera"
@@ -117,7 +130,7 @@
             app:icon="@drawable/ic_outline_photo_camera_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnMicrophone"
-            app:layout_constraintStart_toEndOf="@id/itxtMessage"
+            app:layout_constraintStart_toEndOf="@id/itxtMessageContainer"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button

@@ -66,4 +66,18 @@
         <item name="backgroundTint">#EEEEEF</item>
     </style>
 
+    <!-- Message Input -->
+    <style name="Widget.App.TextInputLayout.Message" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxCornerRadiusBottomEnd">50dp</item>
+        <item name="boxCornerRadiusBottomStart">50dp</item>
+        <item name="boxCornerRadiusTopEnd">50dp</item>
+        <item name="boxCornerRadiusTopStart">50dp</item>
+    </style>
+
+    <style name="Widget.App.EditTextMessage" parent="Widget.AppCompat.EditText">
+        <item name="backgroundTintMode">screen</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
 </resources>
