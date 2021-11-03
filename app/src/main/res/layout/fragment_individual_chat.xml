@@ -74,6 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wallpaper"
+        tools:listitem="@layout/outgoing_message_item"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@id/messageContainer"
         app:layout_constraintTop_toBottomOf="@id/topAppBarContainer" />

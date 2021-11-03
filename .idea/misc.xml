@@ -10,14 +10,20 @@
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/drawable/ic_outline_mic_none_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/drawable/ic_outline_photo_camera_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/drawable/incoming_message.xml" value="0.6" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/drawable/message.xml" value="0.2703125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/drawable/outgoing_message.xml" value="0.2552083333333333" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/chat_item.xml" value="0.4" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_calls.xml" value="0.13020833333333334" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_chat.xml" value="0.5100671140939598" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_chats.xml" value="0.5208110992529349" />
-        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_individual_chat.xml" value="0.8" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_individual_chat.xml" value="0.8800000000000001" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_people.xml" value="0.25416666666666665" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/fragment_settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/incoming_message_item.xml" value="0.8800000000000001" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/message_item.xml" value="0.536" />
+        <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/layout/outgoing_message_item.xml" value="0.6" />
         <entry key="..\:/Documents/AndroidStudioProjects/Kotlin/ChatApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
