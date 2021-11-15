@@ -1,4 +1,4 @@
-package com.example.chatapp.ui
+package com.example.chatapp.ui.home
 
 import android.graphics.Color
 import android.os.Bundle

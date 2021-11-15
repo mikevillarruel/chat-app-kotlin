@@ -1,11 +1,11 @@
-package com.example.chatapp.ui.fragments
+package com.example.chatapp.ui.home.fragments
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.chatapp.R
 
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+class PeopleFragment : Fragment(R.layout.fragment_people) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }

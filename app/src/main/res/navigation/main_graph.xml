@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/chatsFragment"
-        android:name="com.example.chatapp.ui.fragments.ChatsFragment"
+        android:name="com.example.chatapp.ui.home.fragments.ChatsFragment"
         android:label="fragment_chats"
         tools:layout="@layout/fragment_chats" >
         <action
@@ -16,22 +16,22 @@
     </fragment>
     <fragment
         android:id="@+id/callsFragment"
-        android:name="com.example.chatapp.ui.fragments.CallsFragment"
+        android:name="com.example.chatapp.ui.home.fragments.CallsFragment"
         android:label="fragment_calls"
         tools:layout="@layout/fragment_calls" />
     <fragment
         android:id="@+id/peopleFragment"
-        android:name="com.example.chatapp.ui.fragments.PeopleFragment"
+        android:name="com.example.chatapp.ui.home.fragments.PeopleFragment"
         android:label="fragment_people"
         tools:layout="@layout/fragment_people" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.chatapp.ui.fragments.SettingsFragment"
+        android:name="com.example.chatapp.ui.home.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.chatapp.ui.fragments.IndividualChatFragment"
+        android:name="com.example.chatapp.ui.home.fragments.IndividualChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_individual_chat" />
 </navigation>

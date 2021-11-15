@@ -1,4 +1,4 @@
-package com.example.chatapp.ui.fragments
+package com.example.chatapp.ui.home.fragments
 
 import android.os.Bundle
 import android.text.Editable
