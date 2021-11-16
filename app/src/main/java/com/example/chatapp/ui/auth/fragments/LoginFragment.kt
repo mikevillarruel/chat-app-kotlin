@@ -1,5 +1,6 @@
 package com.example.chatapp.ui.auth.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,12 +17,13 @@ import com.example.chatapp.databinding.FragmentLoginBinding
 import com.example.chatapp.domain.auth.AuthRepoImpl
 import com.example.chatapp.presentation.auth.AuthViewModel
 import com.example.chatapp.presentation.auth.AuthViewModelFactory
+import com.example.chatapp.ui.home.MainActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
-    lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentLoginBinding
     private val viewModel by viewModels<AuthViewModel> {
         AuthViewModelFactory(
             AuthRepoImpl(
@@ -39,7 +41,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         Firebase.auth.currentUser?.let {
-            findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
 
         binding.btnSignIn.setOnClickListener {
@@ -52,7 +56,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     }
                     is Result.Success -> {
                         binding.progressBar.hide()
-                        findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+                        val intent = Intent(requireContext(), MainActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()
                         Toast.makeText(
                             requireContext(),
                             "Welcome ${result.data?.email}",

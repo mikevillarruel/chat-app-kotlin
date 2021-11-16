@@ -1,5 +1,6 @@
 package com.example.chatapp.ui.auth.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,10 +17,11 @@ import com.example.chatapp.databinding.FragmentRegisterBinding
 import com.example.chatapp.domain.auth.AuthRepoImpl
 import com.example.chatapp.presentation.auth.AuthViewModel
 import com.example.chatapp.presentation.auth.AuthViewModelFactory
+import com.example.chatapp.ui.home.MainActivity
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-    lateinit var binding: FragmentRegisterBinding
+    private lateinit var binding: FragmentRegisterBinding
     private val viewModel by viewModels<AuthViewModel> {
         AuthViewModelFactory(
             AuthRepoImpl(
@@ -46,7 +48,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         }
                         is Result.Success -> {
                             binding.progressBar.hide()
-                            findNavController().navigate(R.id.action_registerFragment_to_mainActivity)
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
                         }
                         is Result.Failure -> {
                             Toast.makeText(
