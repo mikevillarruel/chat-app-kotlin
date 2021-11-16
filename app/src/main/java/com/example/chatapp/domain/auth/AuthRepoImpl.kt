@@ -9,6 +9,12 @@ class AuthRepoImpl(private val authDataSource: AuthDataSource) : AuthRepo {
         email: String,
         password: String,
         displayName: String
-    ): FirebaseUser? = authDataSource.signUp(email, password, displayName)
+    ): FirebaseUser? {
+        return authDataSource.signUp(email, password, displayName)
+    }
+
+    override suspend fun signIn(email: String, password: String): FirebaseUser? {
+        return authDataSource.signIn(email, password)
+    }
 
 }

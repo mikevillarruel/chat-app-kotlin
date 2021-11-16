@@ -18,6 +18,15 @@ class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
         }
     }
 
+    fun signIn(email: String, password: String) = liveData(Dispatchers.IO) {
+        emit(Result.Loading())
+        try {
+            emit(Result.Success(repo.signIn(email, password)))
+        } catch (e: Exception) {
+            emit(Result.Failure(e))
+        }
+    }
+
 }
 
 class AuthViewModelFactory(private val repo: AuthRepo) : ViewModelProvider.Factory {

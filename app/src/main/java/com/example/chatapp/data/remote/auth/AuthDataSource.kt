@@ -9,8 +9,9 @@ import kotlinx.coroutines.tasks.await
 
 class AuthDataSource {
 
+    private val auth by lazy { Firebase.auth }
+
     suspend fun signUp(email: String, password: String, displayName: String): FirebaseUser? {
-        val auth = Firebase.auth
         val authResult = auth.createUserWithEmailAndPassword(email, password).await()
         authResult.user?.uid?.let { uid ->
             val firestore = Firebase.firestore
@@ -22,6 +23,11 @@ class AuthDataSource {
                 )
                 .await()
         }
+        return authResult.user
+    }
+
+    suspend fun signIn(email: String, password: String): FirebaseUser? {
+        val authResult = auth.signInWithEmailAndPassword(email, password).await()
         return authResult.user
     }
 
