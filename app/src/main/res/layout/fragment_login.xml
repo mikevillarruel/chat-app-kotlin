@@ -45,10 +45,9 @@
 
     <Button
         android:id="@+id/btnSignIn"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In" />
+        android:text="@string/sign_in" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -59,9 +58,8 @@
 
     <Button
         android:id="@+id/btnRegister"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:text="@string/register" />
 
 </LinearLayout>

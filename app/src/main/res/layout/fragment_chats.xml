@@ -30,6 +30,7 @@
 
         <Button
             android:id="@+id/btnAdd"
+            style="@style/Widget.App.CircleButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
@@ -40,6 +41,7 @@
 
         <Button
             android:id="@+id/btnWrite"
+            style="@style/Widget.App.CircleButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="5dp"
