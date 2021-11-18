@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeDestinationChange() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
-                R.id.chatFragment -> {
+                R.id.individualChatFragment -> {
                     binding.bottomNavigation.hide()
                     window.statusBarColor = resources.getColor(R.color.toolbar)
                 }

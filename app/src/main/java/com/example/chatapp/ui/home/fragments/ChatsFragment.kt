@@ -29,7 +29,8 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
     }
 
     private fun onClick(item: User) {
-        Toast.makeText(requireContext(), "${item.displayName}", Toast.LENGTH_SHORT).show()
+        val action = ChatsFragmentDirections.actionChatsFragmentToIndividualChatFragment(item)
+        findNavController().navigate(action)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,7 +38,7 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
         binding = FragmentChatsBinding.bind(view)
 
         binding.btnWrite.setOnClickListener {
-            findNavController().navigate(R.id.action_chatsFragment_to_chatFragment)
+            findNavController().navigate(R.id.action_chatsFragment_to_individualChatFragment)
         }
 
         viewModel.getUsers().observe(viewLifecycleOwner, Observer { result ->

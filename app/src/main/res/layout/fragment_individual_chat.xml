@@ -46,7 +46,7 @@
                         android:id="@+id/txtUsername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Martín Alarcón"
+                        tools:text="Martín Alarcón"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />

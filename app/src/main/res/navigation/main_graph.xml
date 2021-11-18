@@ -11,8 +11,8 @@
         android:label="fragment_chats"
         tools:layout="@layout/fragment_chats" >
         <action
-            android:id="@+id/action_chatsFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            android:id="@+id/action_chatsFragment_to_individualChatFragment"
+            app:destination="@id/individualChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/peopleFragment"
@@ -25,8 +25,12 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
-        android:id="@+id/chatFragment"
+        android:id="@+id/individualChatFragment"
         android:name="com.example.chatapp.ui.home.fragments.IndividualChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_individual_chat" />
+        android:label="fragment_individual_chat"
+        tools:layout="@layout/fragment_individual_chat" >
+        <argument
+            android:name="user"
+            app:argType="com.example.chatapp.data.model.User" />
+    </fragment>
 </navigation>
