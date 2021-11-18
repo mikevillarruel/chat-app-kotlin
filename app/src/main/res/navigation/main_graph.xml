@@ -15,11 +15,6 @@
             app:destination="@id/chatFragment" />
     </fragment>
     <fragment
-        android:id="@+id/callsFragment"
-        android:name="com.example.chatapp.ui.home.fragments.CallsFragment"
-        android:label="fragment_calls"
-        tools:layout="@layout/fragment_calls" />
-    <fragment
         android:id="@+id/peopleFragment"
         android:name="com.example.chatapp.ui.home.fragments.PeopleFragment"
         android:label="fragment_people"
