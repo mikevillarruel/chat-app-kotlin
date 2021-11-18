@@ -10,12 +10,12 @@ import kotlinx.coroutines.tasks.await
 class AuthDataSource {
 
     private val auth by lazy { Firebase.auth }
+    private val db by lazy { Firebase.firestore }
 
     suspend fun signUp(email: String, password: String, displayName: String): FirebaseUser? {
         val authResult = auth.createUserWithEmailAndPassword(email, password).await()
         authResult.user?.uid?.let { uid ->
-            val firestore = Firebase.firestore
-            firestore
+            db
                 .collection("user")
                 .document(uid)
                 .set(
