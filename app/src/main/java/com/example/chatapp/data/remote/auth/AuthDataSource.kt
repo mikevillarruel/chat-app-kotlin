@@ -19,7 +19,7 @@ class AuthDataSource {
                 .collection("user")
                 .document(uid)
                 .set(
-                    User(email, displayName, "")
+                    User(uid, email, displayName, "")
                 )
                 .await()
         }

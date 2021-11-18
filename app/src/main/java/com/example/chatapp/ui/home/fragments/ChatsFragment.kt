@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.chatapp.R
 import com.example.chatapp.core.Result
+import com.example.chatapp.data.model.User
 import com.example.chatapp.data.remote.home.HomeDataSource
 import com.example.chatapp.databinding.FragmentChatsBinding
 import com.example.chatapp.domain.home.HomeRepoImpl
@@ -27,6 +28,10 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
         )
     }
 
+    private fun onClick(item: User) {
+        Toast.makeText(requireContext(), "${item.displayName}", Toast.LENGTH_SHORT).show()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentChatsBinding.bind(view)
@@ -40,7 +45,9 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
                 is Result.Loading -> {
                 }
                 is Result.Success -> {
-                    binding.rvChats.adapter = ChatsAdapter(result.data)
+                    binding.rvChats.adapter = ChatsAdapter(result.data, onClick = { user ->
+                        onClick(user)
+                    })
                 }
                 is Result.Failure -> {
                     Toast.makeText(

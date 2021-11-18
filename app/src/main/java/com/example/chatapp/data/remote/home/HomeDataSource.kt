@@ -16,7 +16,7 @@ class HomeDataSource {
         val usersList = mutableListOf<User>()
         querySnapshot.forEach { user ->
             if (user.id != auth.currentUser?.uid) {
-                user.toObject(User::class.java)?.let { newUser ->
+                user.toObject(User::class.java).let { newUser ->
                     usersList.add(newUser)
                 }
             }

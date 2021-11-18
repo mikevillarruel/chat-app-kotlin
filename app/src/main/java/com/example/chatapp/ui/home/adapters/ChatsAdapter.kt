@@ -9,7 +9,8 @@ import com.example.chatapp.data.model.User
 import com.example.chatapp.databinding.ChatItemBinding
 
 class ChatsAdapter(
-    private val usersList: List<User>
+    private val usersList: List<User>,
+    private val onClick: (item: User) -> Unit
 ) :
     RecyclerView.Adapter<ChatsAdapter.ViewHolder>() {
 
@@ -19,14 +20,21 @@ class ChatsAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: User) {
             binding.txtUsername.text = item.displayName
-            Glide.with(context).load("https://ps.w.org/simple-user-avatar/assets/icon-128x128.png?rev=2413146").into(binding.imgUser)
+            Glide.with(context)
+                .load("https://ps.w.org/simple-user-avatar/assets/icon-128x128.png?rev=2413146")
+                .into(binding.imgUser)
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
             ChatItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(itemBinding, parent.context)
+        val holder = ViewHolder(itemBinding, parent.context)
+        itemBinding.root.setOnClickListener {
+            onClick(usersList[holder.adapterPosition])
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
