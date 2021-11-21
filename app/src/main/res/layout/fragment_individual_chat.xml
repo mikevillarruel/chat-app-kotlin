@@ -46,10 +46,10 @@
                         android:id="@+id/txtUsername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="Martín Alarcón"
                         android:textColor="@color/black"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Martín Alarcón" />
 
                     <TextView
                         android:id="@+id/txtStatus"
@@ -71,13 +71,16 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wallpaper"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@id/messageContainer"
         app:layout_constraintTop_toBottomOf="@id/topAppBarContainer"
-        tools:listitem="@layout/outgoing_message_item" />
+        app:reverseLayout="true"
+        tools:listitem="@layout/incoming_message_item" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/messageContainer"

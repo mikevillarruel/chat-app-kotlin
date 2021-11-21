@@ -2,21 +2,42 @@ package com.example.chatapp.ui.home.fragments
 
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.chatapp.R
+import com.example.chatapp.core.Result
 import com.example.chatapp.core.hide
 import com.example.chatapp.core.show
+import com.example.chatapp.data.model.Message
+import com.example.chatapp.data.model.MessageType
 import com.example.chatapp.data.model.User
+import com.example.chatapp.data.remote.home.HomeDataSource
 import com.example.chatapp.databinding.FragmentIndividualChatBinding
+import com.example.chatapp.domain.home.HomeRepoImpl
+import com.example.chatapp.presentation.home.HomeViewModel
+import com.example.chatapp.presentation.home.HomeViewModelFactory
+import com.example.chatapp.ui.home.adapters.IndividualChatAdapter
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
 
     private lateinit var binding: FragmentIndividualChatBinding
     private lateinit var user: User
     private val arguments: IndividualChatFragmentArgs by navArgs()
+    private val viewModel by viewModels<HomeViewModel> {
+        HomeViewModelFactory(
+            HomeRepoImpl(
+                HomeDataSource()
+            )
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +57,49 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
                 binding.btnSend.show()
             }
         }
+
+        binding.btnSend.setOnClickListener {
+            viewModel.sendMessage(
+                Message(
+                    uid = Firebase.auth.currentUser?.uid.toString(),
+                    content = binding.txtMessage.text.toString().trim(),
+                    MessageType.TEXT.value
+                ), user.uid
+            ).observe(viewLifecycleOwner, Observer { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        binding.txtMessage.text = null
+                    }
+                    is Result.Success -> {
+                    }
+                    is Result.Failure -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "${result.exception.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            })
+        }
+
+        viewModel.getChat(user.uid).observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is Result.Loading -> {
+                }
+                is Result.Success -> {
+                    Log.d("data","${result.data}")
+                    binding.rvMessages.adapter = IndividualChatAdapter(result.data)
+                }
+                is Result.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "${result.exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
 
     }
 }
