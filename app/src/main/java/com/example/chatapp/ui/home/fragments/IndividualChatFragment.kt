@@ -2,9 +2,9 @@ package com.example.chatapp.ui.home.fragments
 
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,6 +23,7 @@ import com.example.chatapp.domain.home.HomeRepoImpl
 import com.example.chatapp.presentation.home.HomeViewModel
 import com.example.chatapp.presentation.home.HomeViewModelFactory
 import com.example.chatapp.ui.home.adapters.IndividualChatAdapter
+import com.example.chatapp.ui.home.modals.MapModalBottomSheet
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -45,6 +46,12 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
         binding = FragmentIndividualChatBinding.bind(view)
         user = arguments.user
         binding.txtUsername.text = user.displayName
+
+        binding.btnAdd.setOnClickListener {
+            val modalBottomSheet = MapModalBottomSheet()
+            modalBottomSheet.arguments = bundleOf("user" to user)
+            modalBottomSheet.show(childFragmentManager, MapModalBottomSheet.TAG)
+        }
 
         binding.txtMessage.addTextChangedListener { text: Editable? ->
             if (text.toString().isNullOrEmpty()) {
@@ -88,7 +95,6 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
                 is Result.Loading -> {
                 }
                 is Result.Success -> {
-                    Log.d("data","${result.data}")
                     binding.rvMessages.adapter = IndividualChatAdapter(result.data)
                 }
                 is Result.Failure -> {

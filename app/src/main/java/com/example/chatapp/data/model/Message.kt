@@ -5,7 +5,7 @@ import java.util.*
 
 data class Message(
     val uid: String = "",
-    val content: String = "",
+    val content: Any? = "",
     val type: String = MessageType.TEXT.value,
     @ServerTimestamp
     val timestamp: Date? = null

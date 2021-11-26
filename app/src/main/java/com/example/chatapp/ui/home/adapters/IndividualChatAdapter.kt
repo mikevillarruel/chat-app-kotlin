@@ -23,7 +23,7 @@ class IndividualChatAdapter(
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Message) {
-            binding.txtMessage.text = item.content
+            binding.txtMessage.text = item.content.toString()
         }
     }
 
@@ -32,7 +32,7 @@ class IndividualChatAdapter(
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Message) {
-            binding.txtMessage.text = item.content
+            binding.txtMessage.text = item.content.toString()
         }
     }
 
