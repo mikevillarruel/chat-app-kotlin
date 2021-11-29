@@ -47,7 +47,7 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
         user = arguments.user
         binding.txtUsername.text = user.displayName
 
-        binding.btnAdd.setOnClickListener {
+        binding.btnLocation.setOnClickListener {
             val modalBottomSheet = MapModalBottomSheet()
             modalBottomSheet.arguments = bundleOf("user" to user)
             modalBottomSheet.show(childFragmentManager, MapModalBottomSheet.TAG)
@@ -55,13 +55,15 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
 
         binding.txtMessage.addTextChangedListener { text: Editable? ->
             if (text.toString().isNullOrEmpty()) {
+                binding.btnSend.hide()
                 binding.btnMicrophone.show()
                 binding.btnCamera.show()
-                binding.btnSend.hide()
+                binding.btnLocation.show()
             } else {
+                binding.btnSend.show()
                 binding.btnMicrophone.hide()
                 binding.btnCamera.hide()
-                binding.btnSend.show()
+                binding.btnLocation.hide()
             }
         }
 

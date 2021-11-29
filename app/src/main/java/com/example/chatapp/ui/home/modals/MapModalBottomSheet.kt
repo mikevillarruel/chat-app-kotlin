@@ -94,6 +94,8 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
     private fun loadLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
+        binding.btnSendLocation.isEnabled = false
+
         val locationPermissionRequest = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) { permissions ->
@@ -140,11 +142,17 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
                                             1000,
                                             null
                                         )
+
+                                        binding.btnSendLocation.isEnabled = true
+
+                                    } else {
+                                        binding.btnSendLocation.isEnabled = false
                                     }
                                 }
                             }
                     }
                     else -> {
+                        binding.btnSendLocation.isEnabled = false
                         Toast.makeText(
                             requireContext(),
                             "Grant location permission to send your location",
