@@ -5,11 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.example.chatapp.core.hide
+import com.example.chatapp.core.show
 import com.example.chatapp.data.model.Message
+import com.example.chatapp.data.model.MessageType
 import com.example.chatapp.databinding.IncomingMessageItemBinding
 import com.example.chatapp.databinding.OutgoingMessageItemBinding
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class IndividualChatAdapter(
     private val messageList: List<Message>
@@ -23,7 +31,39 @@ class IndividualChatAdapter(
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Message) {
-            binding.txtMessage.text = item.content.toString()
+            when (item.type) {
+                MessageType.TEXT.value -> {
+                    binding.txtMessage.text = item.content
+                }
+                MessageType.LOCATION.value -> {
+                    binding.txtMessage.hide()
+                    binding.mapContainer.show()
+
+                    binding.map.onCreate(null)
+                    binding.map.onResume()
+
+                    item.latLng?.let { location ->
+                        binding.map.getMapAsync { map ->
+                            map.moveCamera(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(location.latitude, location.longitude),
+                                    15f
+                                )
+                            )
+                            map.addMarker(
+                                MarkerOptions().position(
+                                    LatLng(
+                                        location.latitude,
+                                        location.longitude
+                                    )
+                                )
+                            )
+                            map.mapType = GoogleMap.MAP_TYPE_NORMAL
+                            map.uiSettings.setAllGesturesEnabled(false)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -32,7 +72,39 @@ class IndividualChatAdapter(
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Message) {
-            binding.txtMessage.text = item.content.toString()
+            when (item.type) {
+                MessageType.TEXT.value -> {
+                    binding.txtMessage.text = item.content
+                }
+                MessageType.LOCATION.value -> {
+                    binding.txtMessage.hide()
+                    binding.mapContainer.show()
+
+                    binding.map.onCreate(null)
+                    binding.map.onResume()
+
+                    item.latLng?.let { location ->
+                        binding.map.getMapAsync { map ->
+                            map.moveCamera(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(location.latitude, location.longitude),
+                                    15f
+                                )
+                            )
+                            map.addMarker(
+                                MarkerOptions().position(
+                                    LatLng(
+                                        location.latitude,
+                                        location.longitude
+                                    )
+                                )
+                            )
+                            map.mapType = GoogleMap.MAP_TYPE_NORMAL
+                            map.uiSettings.setAllGesturesEnabled(false)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -68,10 +140,10 @@ class IndividualChatAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (messageList[position].uid == Firebase.auth.currentUser?.uid.toString()) {
-            return OUTGOING
+        return if (messageList[position].uid == Firebase.auth.currentUser?.uid.toString()) {
+            OUTGOING
         } else {
-            return INCOMING
+            INCOMING
         }
     }
 

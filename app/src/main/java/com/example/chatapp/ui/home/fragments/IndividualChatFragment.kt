@@ -70,7 +70,7 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
                 Message(
                     uid = Firebase.auth.currentUser?.uid.toString(),
                     content = binding.txtMessage.text.toString().trim(),
-                    MessageType.TEXT.value
+                    type = MessageType.TEXT.value
                 ), user.uid
             ).observe(viewLifecycleOwner, Observer { result ->
                 when (result) {

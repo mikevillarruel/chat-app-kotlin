@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.chatapp.R
 import com.example.chatapp.core.Result
+import com.example.chatapp.data.model.LocationLatLng
 import com.example.chatapp.data.model.Message
 import com.example.chatapp.data.model.MessageType
 import com.example.chatapp.data.model.User
@@ -43,7 +44,7 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
             )
         )
     }
-    private var userLatLng: LatLng? = null
+    private var userLatLng: LocationLatLng? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,7 +66,7 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
                 viewModel.sendMessage(
                     Message(
                         uid = Firebase.auth.currentUser?.uid.toString(),
-                        content = userLatLng,
+                        latLng = userLatLng,
                         type = MessageType.LOCATION.value
                     ), user.uid
                 ).observe(viewLifecycleOwner, Observer { result ->
@@ -117,7 +118,10 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
                                             location.longitude
                                         )
 
-                                        userLatLng = markerLatLng
+                                        userLatLng = LocationLatLng(
+                                            location.latitude,
+                                            location.longitude
+                                        )
 
                                         map.addMarker(
                                             MarkerOptions()
