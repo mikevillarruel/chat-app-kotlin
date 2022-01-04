@@ -33,9 +33,7 @@
             android:layout_width="200dp"
             android:layout_height="150dp"
             android:layout_margin="4dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            map:cameraZoom="13"
+            map:cameraZoom="15"
             map:liteMode="true"
             map:mapType="normal"
             map:uiMapToolbar="false" />

@@ -142,7 +142,7 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
                                             1000,
                                             null
                                         )
-
+                                        map.uiSettings.setAllGesturesEnabled(false)
                                         binding.btnSendLocation.isEnabled = true
 
                                     } else {
