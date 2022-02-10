@@ -25,4 +25,12 @@
         <item name="bottomSheetStyle">@style/ModalBottomSheetDialog</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryVariant</item>
+        <item name="colorAccent">@color/onPrimary</item>
+        <item name="android:statusBarColor">@color/primaryVariant</item>
+    </style>
+
 </resources>
