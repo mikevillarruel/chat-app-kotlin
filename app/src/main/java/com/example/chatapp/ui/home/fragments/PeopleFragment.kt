@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.chatapp.R
 import com.example.chatapp.core.Result
+import com.example.chatapp.data.local.LocalHomeDataSource
+import com.example.chatapp.data.model.AppDatabase
 import com.example.chatapp.data.remote.home.HomeDataSource
 import com.example.chatapp.databinding.FragmentPeopleBinding
 import com.example.chatapp.domain.home.HomeRepoImpl
@@ -23,7 +25,10 @@ class PeopleFragment : Fragment(R.layout.fragment_people) {
     private val viewModel by viewModels<HomeViewModel> {
         HomeViewModelFactory(
             HomeRepoImpl(
-                HomeDataSource()
+                HomeDataSource(),
+                LocalHomeDataSource(
+                    AppDatabase.getDatabase(requireContext()).userDao()
+                )
             )
         )
     }

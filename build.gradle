@@ -5,11 +5,12 @@ buildscript {
         mavenCentral()
     }
     ext {
-        nav_version = "2.3.5"
+        nav_version = '2.4.1'
+        room_version = "2.4.1"
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
         // Google Services
         classpath 'com.google.gms:google-services:4.3.10'
         // Safe Args

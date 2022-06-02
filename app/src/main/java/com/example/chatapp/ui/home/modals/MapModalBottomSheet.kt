@@ -14,10 +14,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.chatapp.R
 import com.example.chatapp.core.Result
-import com.example.chatapp.data.model.LocationLatLng
-import com.example.chatapp.data.model.Message
-import com.example.chatapp.data.model.MessageType
-import com.example.chatapp.data.model.User
+import com.example.chatapp.data.local.LocalHomeDataSource
+import com.example.chatapp.data.model.*
 import com.example.chatapp.data.remote.home.HomeDataSource
 import com.example.chatapp.databinding.ModalBottomSheetMapBinding
 import com.example.chatapp.domain.home.HomeRepoImpl
@@ -40,7 +38,10 @@ class MapModalBottomSheet : BottomSheetDialogFragment() {
     private val viewModel by viewModels<HomeViewModel> {
         HomeViewModelFactory(
             HomeRepoImpl(
-                HomeDataSource()
+                HomeDataSource(),
+                LocalHomeDataSource(
+                    AppDatabase.getDatabase(requireContext()).userDao()
+                )
             )
         )
     }

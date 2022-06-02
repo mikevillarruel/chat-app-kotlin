@@ -14,6 +14,8 @@ import com.example.chatapp.R
 import com.example.chatapp.core.Result
 import com.example.chatapp.core.hide
 import com.example.chatapp.core.show
+import com.example.chatapp.data.local.LocalHomeDataSource
+import com.example.chatapp.data.model.AppDatabase
 import com.example.chatapp.data.model.Message
 import com.example.chatapp.data.model.MessageType
 import com.example.chatapp.data.model.User
@@ -35,7 +37,10 @@ class IndividualChatFragment : Fragment(R.layout.fragment_individual_chat) {
     private val viewModel by viewModels<HomeViewModel> {
         HomeViewModelFactory(
             HomeRepoImpl(
-                HomeDataSource()
+                HomeDataSource(),
+                LocalHomeDataSource(
+                    AppDatabase.getDatabase(requireContext()).userDao()
+                )
             )
         )
     }

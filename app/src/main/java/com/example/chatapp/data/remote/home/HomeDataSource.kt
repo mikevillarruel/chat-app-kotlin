@@ -26,6 +26,7 @@ class HomeDataSource {
             if (user.id != auth.currentUser?.uid) {
                 user.toObject(User::class.java).let { newUser ->
                     usersList.add(newUser)
+
                 }
             }
         }
